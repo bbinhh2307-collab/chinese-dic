@@ -314,8 +314,8 @@ transition: 0.2s;
 </div>
 <!-- STROKE ORDER FOR '老' -->
 <div class="stroke-container">
-    <div class="stroke-box">
-       <img src="https://stroke-order.learningweb.moe.edu.tw/charactersGif/老.gif" alt="老">
+    <div id="viz-lao" class="stroke-box"></div>
+    <button class="tag" onclick="writerLao.animateCharacter()">▶ Viết lại</button>
 </div>
 </div>
 </div>
@@ -494,11 +494,9 @@ transition: 0.2s;
 </div>
 <!-- STROKE ORDER FOR '便宜' -->
 <div class="stroke-container">
-    <div class="stroke-box">
-       <img src="https://stroke-order.learningweb.moe.edu.tw/charactersGif/便.gif" alt="便">
-</div>
-<div class="stroke-box">
-    <img src="https://stroke-order.learningweb.moe.edu.tw/charactersGif/宜.gif" alt="宜">
+    <div id="viz-bian" class="stroke-box"></div>
+    <div id="viz-yi" class="stroke-box"></div>
+    <button class="tag" onclick="animatePianYi()">▶ Viết lại</button>
 </div>
 </div>
 </div>
@@ -594,11 +592,9 @@ transition: 0.2s;
 </div>
 <!-- STROKE ORDER FOR '麻煩' -->
 <div class="stroke-container">
-    <div class="stroke-box">
-       <img src="https://stroke-order.learningweb.moe.edu.tw/charactersGif/麻.gif" alt="麻">
-</div>
-<div class="stroke-box">
-    <img src="https://stroke-order.learningweb.moe.edu.tw/charactersGif/煩.gif" alt="煩">
+    <div id="viz-ma" class="stroke-box"></div>
+    <div id="viz-fan" class="stroke-box"></div>
+    <button class="tag" onclick="animateMaFan()">▶ Viết lại</button>
 </div>
 </div>
 </div>
@@ -692,6 +688,40 @@ function play(text) {
 // Load voices ban đầu cho một số trình duyệt
 window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 </script>
+<script>
+    // Cấu hình chung cho nét vẽ
+    const config = {
+        width: 160,
+        height: 160,
+        padding: 5,
+        strokeAnimationSpeed: 1, 
+        delayBetweenStrokes: 200,
+        strokeColor: '#2563eb' // Màu xanh giống theme của bạn
+    };
 
+    // 1. Khởi tạo chữ Lão
+    const writerLao = HanziWriter.create('viz-lao', '老', config);
+    writerLao.animateCharacter();
+
+    // 2. Khởi tạo cụm Tiện Nghi
+    const writerBian = HanziWriter.create('viz-bian', '便', config);
+    const writerYi = HanziWriter.create('viz-yi', '宜', config);
+    function animatePianYi() {
+        writerBian.animateCharacter({ onComplete: () => {
+            setTimeout(() => writerYi.animateCharacter(), 200);
+        }});
+    }
+    animatePianYi();
+
+    // 3. Khởi tạo cụm Ma Phiền
+    const writerMa = HanziWriter.create('viz-ma', '麻', config);
+    const writerFan = HanziWriter.create('viz-fan', '煩', config);
+    function animateMaFan() {
+        writerMa.animateCharacter({ onComplete: () => {
+            setTimeout(() => writerFan.animateCharacter(), 200);
+        }});
+    }
+    animateMaFan();
+</script>
 </body>
 </html>
