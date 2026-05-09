@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
+<head>：<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOE Style Hán-Việt Dictionary</title>
@@ -313,12 +313,21 @@ transition: 0.2s;
 <span class="badge">HSK 1</span><span class="badge">TOCFL 1</span>
 </div>
 <!-- STROKE ORDER FOR '老' -->
-<div class="stroke-wrapper">
-    <div class="stroke-card">
-        <h4>Chữ 老</h4>
-        <div class="stroke-box">
-            <iframe src="https://stroke-order.learningweb.moe.edu.tw/strokeStateless.do?w=老&m=flash"></iframe>
-        </div>
+<div id="target-lao"></div>
+<button id="btn-lao">Minh họa nét vẽ</button>
+
+<script>
+  var writerLao = HanziWriter.create('target-lao', '老', {
+    width: 150,
+    height: 150,
+    padding: 5,
+    showOutline: true,
+    strokeColor: '#005088'
+  });
+  document.getElementById('btn-lao').addEventListener('click', function() {
+    writerLao.animateCharacter();
+  });
+</script>
 </div>
 </div>
 
@@ -520,17 +529,26 @@ transition: 0.2s;
 <span class="badge">HSK 2</span><span class="badge">TOCFL 1</span>
 </div>
 <!-- STROKE ORDER FOR '便宜' -->
-<div class="stroke-card">
-        <h4>Chữ 便</h4>
-        <div class="stroke-box">
-            <iframe src="https://stroke-order.learningweb.moe.edu.tw/strokeStateless.do?w=便&m=flash"></iframe>
-        </div>
-    </div>
-    <div class="stroke-card">
-        <h4>Chữ 宜</h4>
-        <div class="stroke-box">
-            <iframe src="https://stroke-order.learningweb.moe.edu.tw/strokeStateless.do?w=宜&m=flash"></iframe>
-        </div>
+<div style="display: flex;">
+  <div id="target-pian"></div>
+  <div id="target-yi"></div>
+</div>
+<button id="btn-pianyi">Minh họa nét vẽ</button>
+
+<script>
+  var writerPian = HanziWriter.create('target-pian', '便', {
+    width: 150, height: 150, padding: 5, showOutline: true
+  });
+  var writerYi = HanziWriter.create('target-yi', '宜', {
+    width: 150, height: 150, padding: 5, showOutline: true
+  });
+
+  document.getElementById('btn-pianyi').addEventListener('click', function() {
+    // Chạy đồng thời cả 2 chữ
+    writerPian.animateCharacter();
+    writerYi.animateCharacter();
+  });
+</script>
 </div>
 </div>
 
@@ -648,17 +666,29 @@ transition: 0.2s;
 <span class="badge">HSK 3</span><span class="badge">TOCFL 2</span>
 </div>
 <!-- STROKE ORDER FOR '麻煩' -->
-<div class="stroke-card">
-        <h4>Chữ 麻</h4>
-        <div class="stroke-box">
-            <iframe src="https://stroke-order.learningweb.moe.edu.tw/strokeStateless.do?w=麻&m=flash"></iframe>
-        </div>
-    </div>
-    <div class="stroke-card">
-        <h4>Chữ 煩</h4>
-        <div class="stroke-box">
-            <iframe src="https://stroke-order.learningweb.moe.edu.tw/strokeStateless.do?w=煩&m=flash"></iframe>
-        </div>
+<div style="display: flex;">
+  <div id="target-ma"></div>
+  <div id="target-fan"></div>
+</div>
+<button id="btn-mafan">Minh họa nét vẽ</button>
+
+<script>
+  var writerMa = HanziWriter.create('target-ma', '麻', {
+    width: 150, height: 150, padding: 5, showOutline: true, strokeAnimationSpeed: 2
+  });
+  var writerFan = HanziWriter.create('target-fan', '煩', {
+    width: 150, height: 150, padding: 5, showOutline: true, strokeAnimationSpeed: 2
+  });
+
+  document.getElementById('btn-mafan').addEventListener('click', function() {
+    // Chạy tuần tự: Ma xong rồi đến Fan
+    writerMa.animateCharacter({
+      onComplete: function() {
+        writerFan.animateCharacter();
+      }
+    });
+  });
+</script>
 </div>
 </div>
 
