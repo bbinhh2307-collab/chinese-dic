@@ -550,32 +550,6 @@ transition: 0.2s;
 </div>
 </div>
 </div>
-<div class="section">
-    <div class="sectionTitle">Tự Hình (Sự tiến hóa)</div>
-    <div class="hanzi-evolution-wrapper">
-        <div class="evo-item">
-            <div class="evo-sidebar"><span class="dot green"></span><div class="line"></div></div>
-            <div class="evo-card">
-                <div class="header-tags">
-                    <span class="tag-vn">Kim Văn</span>
-                    <span class="tag-cn bg-green">金文</span>
-                    <span class="tag-time">~1000 TCN</span>
-                </div>
-                <div class="glyph-img"><img src="https://api.hanzii.net/api/v1/kanji/glyph/老/bronze" alt="老 Kim Văn"></div>
-            </div>
-        </div>
-        <div class="evo-item">
-            <div class="evo-sidebar"><span class="dot red"></span></div>
-            <div class="evo-card">
-                <div class="header-tags">
-                    <span class="tag-vn">Tiểu Triện</span>
-                    <span class="tag-cn bg-red">小篆</span>
-                    <span class="tag-time">~220 TCN</span>
-                </div>
-                <div class="glyph-img"><img src="https://api.hanzii.net/api/v1/kanji/glyph/老/seal" alt="老 Tiểu Triện"></div>
-            </div>
-        </div>
-    </div>
 </div>
     
 <!-- 便宜 -->
@@ -690,24 +664,6 @@ transition: 0.2s;
 </div>
 </div>
 </div>
-<div class="section">
-   <div class="sectionTitle">Tự hình (Evolution)</div>
-    <div class="evo-list">
-        <div class="evo-item">
-            <span class="evo-dot" style="background:#3b82f6;"></span>
-            <div class="evo-card">
-                <div><strong>Chữ 便:</strong> Thẻ tre thời Tần <span class="evo-tag" style="background:#3b82f6;">秦系简牍</span></div>
-                <div class="glyph-box"><img src="https://api.hanzii.net/api/v1/kanji/glyph/便/slip"></div>
-            </div>
-        </div>
-        <div class="evo-item">
-            <span class="evo-dot" style="background:#ef4444;"></span>
-            <div class="evo-card">
-                <div><strong>Chữ 宜:</strong> Tiểu Triện <span class="evo-tag" style="background:#ef4444;">小篆</span></div>
-                <div class="glyph-box"><img src="https://api.hanzii.net/api/v1/kanji/glyph/宜/seal"></div>
-            </div>
-        </div>
-    </div>
 </div>
 <!-- 麻煩 -->
 <div class="card">
@@ -811,24 +767,6 @@ transition: 0.2s;
 </div>
 </div>
 </div>
-<div class="section">
-    <div class="sectionTitle">Tự hình (Evolution)</div>
-    <div class="evo-list">
-        <div class="evo-item">
-            <span class="evo-dot" style="background:#10b981;"></span>
-            <div class="evo-card">
-                <div><strong>Chữ 麻:</strong> Tiểu Triện <span class="evo-tag" style="background:#10b981;">小篆</span></div>
-                <div class="glyph-box"><img src="https://api.hanzii.net/api/v1/kanji/glyph/麻/seal"></div>
-            </div>
-        </div>
-        <div class="evo-item">
-            <span class="evo-dot" style="background:#f59e0b;"></span>
-            <div class="evo-card">
-                <div><strong>Chữ 煩:</strong> Tiểu Triện <span class="evo-tag" style="background:#f59e0b;">小篆</span></div>
-                <div class="glyph-box"><img src="https://api.hanzii.net/api/v1/kanji/glyph/煩/seal"></div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -885,30 +823,6 @@ window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices(
     }
     animateMaFan();
 </script>
-    <script>
-    const config = { width: 150, height: 150, padding: 5, strokeAnimationSpeed: 1, strokeColor: '#000000' };
-
-    // Khởi tạo Hanzi Writer
-    const writerBian = HanziWriter.create('char-bian', '便', config);
-    const writerYi = HanziWriter.create('char-yi', '宜', config);
-    const writerMa = HanziWriter.create('char-ma', '麻', config);
-    const writerFan = HanziWriter.create('char-fan', '煩', config);
-
-    // Hàm chạy hiệu ứng
-    function playPianYi() {
-        writerBian.animateCharacter({ onComplete: () => {
-            setTimeout(() => writerYi.animateCharacter(), 200);
-        }});
-    }
-
-    function playMaFan() {
-        writerMa.animateCharacter({ onComplete: () => {
-            setTimeout(() => writerFan.animateCharacter(), 200);
-        }});
-    }
-
-    // Tự động chạy khi mở trang
-    window.onload = () => { playPianYi(); playMaFan(); };
 </script>
 </body>
 </html>
