@@ -885,5 +885,30 @@ window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices(
     }
     animateMaFan();
 </script>
+    <script>
+    const config = { width: 150, height: 150, padding: 5, strokeAnimationSpeed: 1, strokeColor: '#000000' };
+
+    // Khởi tạo Hanzi Writer
+    const writerBian = HanziWriter.create('char-bian', '便', config);
+    const writerYi = HanziWriter.create('char-yi', '宜', config);
+    const writerMa = HanziWriter.create('char-ma', '麻', config);
+    const writerFan = HanziWriter.create('char-fan', '煩', config);
+
+    // Hàm chạy hiệu ứng
+    function playPianYi() {
+        writerBian.animateCharacter({ onComplete: () => {
+            setTimeout(() => writerYi.animateCharacter(), 200);
+        }});
+    }
+
+    function playMaFan() {
+        writerMa.animateCharacter({ onComplete: () => {
+            setTimeout(() => writerFan.animateCharacter(), 200);
+        }});
+    }
+
+    // Tự động chạy khi mở trang
+    window.onload = () => { playPianYi(); playMaFan(); };
+</script>
 </body>
 </html>
